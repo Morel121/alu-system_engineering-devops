@@ -1,0 +1,4 @@
+# Pour tester localement (sur votre machine de travail) :
+mkdir -p ~/.ssh
+echo -e "Host *\n    IdentityFile ~/.ssh/school\n    PasswordAuthentication no" >> ~/.ssh/config
+chmod 600 ~/.ssh/config
