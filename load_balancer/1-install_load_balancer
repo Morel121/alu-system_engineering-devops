@@ -20,8 +20,8 @@ frontend local_http_front
 backend local_http_back
     mode http
     balance roundrobin
-    server web-01 IP_DE_TON_WEB_01:80 check
-    server web-02 IP_DE_TON_WEB_02:80 check
+    server web-01 3.93.4.225:80 check
+    server web-02 3.94.109.78:80 check
 EOF
 
 # Restart HAProxy to apply the configuration
