@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Script that displays information about subdomains for a given domain
+
+domain="$1"
+subdomain="$2"
+
+# Function to query and format DNS record information for a subdomain
+audit_subdomain() {
+    local dom="$1"
+    local sub="$2"
+
+    # shellcheck disable=SC2086
+    dig "${sub}.${dom}" | awk -v sub="$sub" '/IN[ \t]+A/ {print "The subdomain " sub " is a " $4 " record and points to " $5}'
+}
+
+if [ -n "$subdomain" ]; then
+    audit_subdomain "$domain" "$subdomain"
+else
+    for sub in www lb-01 web-01 web-02; do
+        audit_subdomain "$domain" "$sub"
+    done
+f#!/usr/bin/env bash
+# Script that displays information about subdomains for a given domain
+
+domain="$1"
+subdomain="$2"
+
+# Function to query and format DNS record information for a subdomain
+audit_subdomain() {
+    local dom="$1"
+    local sub="$2"
+
+    # shellcheck disable=SC2086
+    dig "${sub}.${dom}" | awk -v sub="$sub" '/IN[ \t]+A/ {print "The subdomain " sub " is a " $4 " record and points to " $5}'
+}
+
+if [ -n "$subdomain" ]; then
+    audit_subdomain "$domain" "$subdomain"
+else
+    for sub in www lb-01 web-01 web-02; do
+        audit_subdomain "$domain" "$sub"
+    done
+fi
